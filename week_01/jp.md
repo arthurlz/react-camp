@@ -1,0 +1,40 @@
+三大前端フレームワークの市場シェア
+
+
+Reactの基礎知識
+コンポーネント間の通信方法
+Reactには、クラス（Class）コンポーネントと関数（Function）コンポーネントの2種類があります。
+公式ドキュメントでは、すでにクラスコンポーネントがlegacy（レガシー）として分類されています。
+
+親から子へ、子から親へ
+Context
+ReactにおけるContextは、コンポーネントツリー内で階層を超えてデータを渡すために使用されます。特に、祖先コンポーネントから深い階層の子コンポーネントに状態やメソッドを伝えるのに適しています。一部の開発者は日常的にあまり使用しないと考えるかもしれませんが、実際にはReactエコシステムにおいて非常に重要な仕組みです。
+Vueのprovideとinjectも、このContextの考え方を取り入れています。
+Contextの使用パターンは以下の通りです。
+
+Contextの作成：React.createContext() を使用してコンテキストオブジェクトを定義する。
+Provider（提供者）：外側のコンポーネントでProviderを使用し、その子コンポーネントにデータを渡す。
+Consumer（利用者）：内部のコンポーネントでConsumerまたはuseContext Hookを使ってデータを取得する。
+このパターンを活用することで、コンポーネントのネストが深くなっても、煩雑なpropsのバケツリレーを回避でき、コードの可読性と保守性を向上させることができます。
+
+React V16の10種類のReact Hooks
+公式ドキュメント
+
+useState
+useEffect
+useContext
+useReducer
+useMemo
+useCallback
+useRef
+useImperativeHandle（forwardRefと組み合わせて使用）
+useLayoutEffect
+useDebugValue
+React V18の5種類の新しいHooks
+useSyncExternalStore
+useTransition
+useDeferredValue
+useInsertionEffect
+useId
+Hooksのクロージャの罠
+カスタムHooks
