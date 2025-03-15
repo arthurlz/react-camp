@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .pl-2 {
+    padding-left: 13px;
+  }
+}
+
+@utility skytech{
+  background-color: blue;
+}
+
+@theme {
+  --breakpoint-md: 520px;
+}
+
+.test-text {
+  @apply text-blue-600 font-medium hover:underline;
+}
+
+.nav-router-link {
+  @apply text-blue-600 font-medium hover:underline;
+}
