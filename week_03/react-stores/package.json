@@ -14,6 +14,7 @@
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@tailwindcss/vite": "^4.0.14",
     "@tanstack/react-query": "^5.69.0",
+    "@tanstack/react-query-devtools": "^5.70.0",
     "antd": "^5.24.3",
     "framer-motion": "^12.5.0",
     "jotai": "^2.12.2",

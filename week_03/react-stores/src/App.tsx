@@ -6,6 +6,7 @@ import ContextSample from './context/ContextIssue'
 import App from './zustand/WithSelectorApp'
 import AppNoSub from './jotai/AsyncAtom'
 import ValtioApp from './valtio/App'
+import ReactQuery from './react-query/App2'
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -36,4 +37,4 @@ import ValtioApp from './valtio/App'
 //   )
 // }
 
-export default ValtioApp
+export default ReactQuery
