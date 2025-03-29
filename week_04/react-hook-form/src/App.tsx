@@ -2,11 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import ContextSample from './context/ContextIssue'
-import App from './zustand/WithSelectorApp'
-import AppNoSub from './jotai/AsyncAtom'
-import ValtioApp from './valtio/App'
-import ReactQuery from './react-query/AppInf'
+import FormWithoutReactHookForm from './form/FormWithRHFZod'
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -21,7 +17,7 @@ import ReactQuery from './react-query/AppInf'
 //           <img src={reactLogo} className="logo react" alt="React logo" />
 //         </a>
 //       </div>
-//       <h1>Vite + React</h1>
+//       <h1 className="text-red-300">Vite + React</h1>
 //       <div className="card">
 //         <button onClick={() => setCount((count) => count + 1)}>
 //           count is {count}
@@ -37,4 +33,4 @@ import ReactQuery from './react-query/AppInf'
 //   )
 // }
 
-export default ReactQuery
+export default FormWithoutReactHookForm
