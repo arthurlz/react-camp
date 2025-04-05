@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESM React Import Example</title>
+</head>
+<body>
+
+  <!-- 定义 import map，将模块别名映射到远程 CDN 上的实际地址 -->
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19.0.0"
+      }
+    }
+  </script>
+
+  <!-- 使用 ES Module 导入映射到的 React 模块 -->
+  <script type="module">
+    import ReactLib from "react";
+
+    console.log("React runtime object:", ReactLib);
+  </script>
+
+</body>
+</html>

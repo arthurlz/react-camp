@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Module Import</title>
+</head>
+<body>
+
+<script>
+  // 定义模块源代码
+  const moduleSource = `
+    function sum(a, b) {
+      return a + b;
+    }
+    export { sum };
+  `;
+
+  // 创建 Blob 并生成模块 URL
+  const moduleUrl = URL.createObjectURL(
+    new Blob([moduleSource], { type: 'application/javascript' })
+  );
+
+  // 动态生成导入该模块的代码
+  const importerCode = `
+    import { sum } from "${moduleUrl}";
+    console.log(sum(2, 3));
+  `;
+
+  // 创建 <script type="module"> 标签执行动态代码
+  const moduleScript = document.createElement('script');
+  moduleScript.type = 'module';
+  moduleScript.textContent = importerCode;
+  document.body.appendChild(moduleScript);
+</script>
+
+</body>
+</html>
