@@ -1,7 +1,9 @@
 import classnames from "classnames";
 import React, { MouseEventHandler, useCallback, useEffect, useRef, useState } from "react";
+import { Theme } from "../../../store/ReactPlaygroundStore";
 
 export type TabItemProps = {
+  theme: Theme
   value: string;
   activated: boolean;
   creating: boolean;
@@ -14,6 +16,7 @@ export type TabItemProps = {
 export const TabItem: React.FC<TabItemProps> = (props) => {
   const {
     value,
+    theme,
     activated = false,
     creating,
     readonly,
@@ -51,6 +54,8 @@ export const TabItem: React.FC<TabItemProps> = (props) => {
     <div
       className={classnames(
         'inline-flex items-center cursor-pointer border-b-[3px] border-transparent px-3 py-2 text-sm leading-5',
+        theme === 'light' && 'text-gray-700 hover:text-black hover:bg-gray-100',
+        theme === 'dark' && 'text-gray-300 hover:text-white hover:bg-gray-700 bg-[#1e1e1e]',
         activated && 'text-sky-500 border-b-sky-500',
       )}
       onClick={onClick}

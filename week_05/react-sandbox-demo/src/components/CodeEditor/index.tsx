@@ -5,6 +5,7 @@ import Editor from "./Editor";
 import { debounce } from "lodash-es";
 
 export default function CodeEditor() {
+  const theme = usePlaygroundStore.use.theme()
   const files = usePlaygroundStore.use.files()
   const setFiles = usePlaygroundStore.use.setFile()
   const selectedFileName = usePlaygroundStore.use.selectedFileName()
@@ -25,7 +26,15 @@ export default function CodeEditor() {
   return (
     <div className="flex flex-col h-full">
       <TabList />
-      <Editor file={file} onChange={debounce(onEditorChange, 500)} />
+      <Editor
+        file={file}
+        onChange={debounce(onEditorChange, 500)}
+        options={
+          {
+            theme: `vs-${theme}`,
+          }
+        }
+      />
     </div>
   );
 }

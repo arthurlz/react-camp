@@ -3,7 +3,7 @@ import { fileName2Language } from '../utils/utils'
 import { createSelectors } from './CreateSelector'
 import { initFiles } from '../playgroundFiles/files'
 
-type File = {
+export type File = {
   name: string
   value: string
   language: string
@@ -12,9 +12,12 @@ export type Files = {
   [key: string]: File
 }
 
+export type Theme = 'light' | 'dark'
+
 type PlaygroundState = {
   files: Files
   selectedFileName: string
+  theme: Theme
 }
 
 type PlaygroundActions = {
@@ -23,6 +26,7 @@ type PlaygroundActions = {
   addFile: (fileName: string) => void
   removeFile: (fileName: string) => void
   updateFileName: (oldFieldName: string, newFieldName: string) => void
+  setTheme: (theme: Theme) => void
 }
 
 type PlaygroundStore = PlaygroundState & PlaygroundActions
@@ -30,6 +34,7 @@ type PlaygroundStore = PlaygroundState & PlaygroundActions
 const initialState: PlaygroundState = {
   files: initFiles,
   selectedFileName: 'App.tsx',
+  theme: 'light'
 }
 
 const usePlaygroundBaseStore = create<PlaygroundStore>((set) => ({
@@ -67,6 +72,8 @@ const usePlaygroundBaseStore = create<PlaygroundStore>((set) => ({
       },
     }
   }),
+
+  setTheme: (theme) => set({ theme })
 }))
 
 export const usePlaygroundStore = createSelectors(usePlaygroundBaseStore)

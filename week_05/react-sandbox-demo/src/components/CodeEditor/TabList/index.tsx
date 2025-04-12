@@ -2,8 +2,10 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { usePlaygroundStore } from "../../../store/ReactPlaygroundStore";
 import { APP_COMPONENT_FILE_NAME, ENTRY_FILE_NAME, IMPORT_MAP_FILE_NAME } from "../../../playgroundFiles/files";
 import { TabItem } from "./TabItem";
+import classnames from 'classnames'
 
 export default function TabList() {
+  const theme = usePlaygroundStore.use.theme()
   const files = usePlaygroundStore.use.files()
   const removeFile = usePlaygroundStore.use.removeFile()
   const addFile = usePlaygroundStore.use.addFile()
@@ -35,6 +37,7 @@ export default function TabList() {
       <TabItem
         key={tab + index}
         value={tab}
+        theme={theme}
         readonly={readonlyFileNames.includes(tab)}
         creating={creating && index === arr.length - 1}
         activated={selectedFileName === tab}
@@ -45,7 +48,7 @@ export default function TabList() {
         }}
       />
     ))
-  }, [creating, onEditComplete, onRemove, readonlyFileNames, selectedFileName, setSelectedFileName, tabs])
+  }, [creating, onEditComplete, onRemove, readonlyFileNames, selectedFileName, setSelectedFileName, tabs, theme])
 
   const addTab = () => {
     const newFileName = `Com${Math.random().toString().slice(2, 8)}.tsx`
@@ -59,12 +62,13 @@ export default function TabList() {
   }, [files])
 
   return <div
-    className="
-      flex items-center h-9
+    className={classnames(
+      `flex items-center h-9
       overflow-x-auto overflow-y-hidden
       border-b border-gray-300 box-border
-      text-gray-700 bg-white
-    "
+      text-gray-700`,
+      theme === 'light' ? 'bg-white' : 'bg-[#1e1e1e] border-b-[#1e1e1e]',
+    )}
   >
     {renderTabs()}
     <div onClick={addTab}>+</div>
